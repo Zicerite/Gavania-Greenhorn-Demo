@@ -1,0 +1,46 @@
+Citizen: 
+  name: 'Citizen'
+  action-bar: ''
+  prefix: '&f'
+  group: 'class'
+  mana: '&2Mana'
+  max-level: 1
+  parent: ''
+  needs-permission: 'false'
+  attributes: 
+    health-base: '20'
+    health-scale: '0'
+    mana-base: '20'
+    mana-scale: '0'
+    staminabonus-base: '100'
+    staminabonus-scale: '0'
+    staminabonusminusone-base: '99'
+    staminabonusminusone-scale: '0'
+    basespeed-base: '15'
+    basespeed-scale: '0'
+    weight-base: '100'
+    weight-scale: '0'
+    naturalmanaregen-base: '20'
+    naturalmanaregen-scale: '0'
+  mana-regen: 0.0
+  tree: 'FLOOD'
+  blacklist:  []
+  skills: 
+  - 'Natural Living'
+  - 'StaminaBonusRunner'
+  - 'VoidController'
+  - 'Debug_Mode'
+  - 'Defensive Crouch Skill'
+  - 'InvisibilityPassive'
+  - 'Environmental Damage Runner'
+  - 'Potion Effects Runner'
+  - 'WaterController'
+  - 'Wither Runner'
+  - 'LC Weapon Controller'
+  - 'RC Weapon Controller'
+  icon: 'CLAY'
+  icon-durability: 0
+  icon-data: 0
+  icon-lore: 
+  - '&dCitizen'
+  exp-source: 511
