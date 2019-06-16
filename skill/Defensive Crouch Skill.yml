@@ -1,0 +1,1170 @@
+Defensive Crouch Skill: 
+  name: 'Defensive Crouch Skill'
+  type: 'Dodge'
+  max-level: 6
+  skill-req-lvl: 1
+  needs-permission: 'false'
+  attributes: 
+    level-base: '1'
+    level-scale: '0'
+    cost-base: '1'
+    cost-scale: '0'
+    cooldown-base: '0'
+    cooldown-scale: '0'
+    mana-base: '0'
+    mana-scale: '0'
+    points-spent-req-base: '0'
+    points-spent-req-scale: '0'
+    incompatible: 
+    - ''
+  msg: '&6{player} &2has cast &6{skill}'
+  icon: 'FEATHER'
+  icon-durability: 0
+  icon-data: 0
+  icon-lore: 
+  - '&d{name}'
+  - ''
+  - '&eSetting for your Defensive Crouch Option.'
+  - '&eLeft click to increase, Right Click to Decrease.'
+  - '&eOnly works when not in water.'
+  - '&eHolding it down makes you dodge further,'
+  - '  &ebut cost more stamina.'
+  - '&aStamina Cost: &65&f-&635'
+  - '&bYou are invincible while dodging.'
+  - '&aCurrent Mode: &b[{level}]'
+  - ''
+  - '&dMode 1:'
+  - '&cGrounded Backwards Dodge'
+  - '&cMid-Air Backwards Dodge'
+  - '&dMode 2:'
+  - '&cGrounded Forward Dodge'
+  - '&cMid-Air Backwards Dodge'
+  - '&dMode 3:'
+  - '&cGrounded Backwards Dodge'
+  - '&cMid-Air Forward Dodge'
+  - '&dMode 4:'
+  - '&cGrounded Forward Dodge'
+  - '&cMid-Air Forward Dodge'
+  desc:  []
+  components: 
+    Crouch-a: 
+      type: 'trigger'
+      indicator: '3D'
+      data: 
+        icon-key: ''
+        mana: 'False'
+        cooldown: 'False'
+        type: 'Start Crouching'
+        indicator: '2D'
+      children: 
+        Offhand-b: 
+          type: 'condition'
+          indicator: '3D'
+          data: 
+            icon-key: ''
+            check-mat: 'True'
+            material: 'Coal'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'False'
+            regex: 'False'
+            indicator: '2D'
+          children: 
+            Value Set-c: 
+              type: 'mechanic'
+              indicator: '3D'
+              data: 
+                icon-key: ''
+                counts: 'True'
+                key: 'value'
+                value-base: '1'
+                value-scale: '0'
+                indicator: '2D'
+              children:  {}
+        Else-d: 
+          type: 'condition'
+          indicator: '3D'
+          data: 
+            icon-key: ''
+            indicator: '2D'
+          children: 
+            Water-e: 
+              type: 'condition'
+              indicator: '3D'
+              data: 
+                icon-key: ''
+                state: 'Out Of Water'
+                indicator: '2D'
+              children: 
+                Skill Level-f: 
+                  type: 'condition'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    skill: 'Defensive Crouch Skill'
+                    min-level: '1'
+                    max-level: '1'
+                    indicator: '2D'
+                  children: 
+                    Ground-g: 
+                      type: 'condition'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        type: 'On Ground'
+                        indicator: '2D'
+                      children: 
+                        Block-h: 
+                          type: 'condition'
+                          indicator: '3D'
+                          data: 
+                            icon-key: ''
+                            standing: 'Not In Block'
+                            material: 'Ladder'
+                            indicator: '2D'
+                          children: 
+                            Block-i: 
+                              type: 'condition'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                standing: 'Not In Block'
+                                material: 'Fence'
+                                indicator: '2D'
+                              children: 
+                                Value-j: 
+                                  type: 'condition'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    key: 'stamina'
+                                    min-value-base: '0'
+                                    min-value-scale: '0'
+                                    max-value-base: '999'
+                                    max-value-scale: '0'
+                                    indicator: '2D'
+                                  children: 
+                                    Command-k: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        command: 'playsound spells.wind1 ambient @a[r=16] ~ ~ ~ 0.2 1.5'
+                                        type: 'OP'
+                                        indicator: '2D'
+                                      children:  {}
+                                    Repeat-l: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        repetitions-base: '7'
+                                        repetitions-scale: '0'
+                                        period: '0.05'
+                                        delay: '0'
+                                        stop-on-fail: 'False'
+                                        indicator: '2D'
+                                      children: 
+                                        Crouch-m: 
+                                          type: 'condition'
+                                          indicator: '3D'
+                                          data: 
+                                            icon-key: ''
+                                            crouch: 'True'
+                                            indicator: '2D'
+                                          children: 
+                                            Launch-n: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                relative: 'Caster'
+                                                forward-base: '-0.75'
+                                                forward-scale: '0'
+                                                upward-base: '-0.1'
+                                                upward-scale: '0'
+                                                right-base: '0'
+                                                right-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Particle-o: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                particle: 'Enchantment Table'
+                                                arrangement: 'Sphere'
+                                                radius-base: '2'
+                                                radius-scale: '0'
+                                                particles-base: '2'
+                                                particles-scale: '0'
+                                                visible-radius: '30'
+                                                dx: '0'
+                                                dy: '0'
+                                                dz: '0'
+                                                speed: '0'
+                                                amount: '1'
+                                                forward: '0'
+                                                upward: '1'
+                                                right: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Value Add-p: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                key: 'stamina'
+                                                amount-base: '-5'
+                                                amount-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Status-q: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                status: 'Invincible'
+                                                duration-base: '0.1'
+                                                duration-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                    Ground-r: 
+                      type: 'condition'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        type: 'Not On Ground'
+                        indicator: '2D'
+                      children: 
+                        Block-s: 
+                          type: 'condition'
+                          indicator: '3D'
+                          data: 
+                            icon-key: ''
+                            standing: 'Not In Block'
+                            material: 'Ladder'
+                            indicator: '2D'
+                          children: 
+                            Block-t: 
+                              type: 'condition'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                standing: 'Not In Block'
+                                material: 'Fence'
+                                indicator: '2D'
+                              children: 
+                                Value-u: 
+                                  type: 'condition'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    key: 'stamina'
+                                    min-value-base: '0'
+                                    min-value-scale: '0'
+                                    max-value-base: '999'
+                                    max-value-scale: '0'
+                                    indicator: '2D'
+                                  children: 
+                                    Command-v: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        command: 'playsound spells.wind1 ambient @a[r=16] ~ ~ ~ 0.2 1.5'
+                                        type: 'OP'
+                                        indicator: '2D'
+                                      children:  {}
+                                    Repeat-w: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        repetitions-base: '7'
+                                        repetitions-scale: '0'
+                                        period: '0.05'
+                                        delay: '0'
+                                        stop-on-fail: 'False'
+                                        indicator: '2D'
+                                      children: 
+                                        Crouch-x: 
+                                          type: 'condition'
+                                          indicator: '3D'
+                                          data: 
+                                            icon-key: ''
+                                            crouch: 'True'
+                                            indicator: '2D'
+                                          children: 
+                                            Launch-y: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                relative: 'Caster'
+                                                forward-base: '-0.75'
+                                                forward-scale: '0'
+                                                upward-base: '-0.1'
+                                                upward-scale: '0'
+                                                right-base: '0'
+                                                right-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Particle-z: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                particle: 'Enchantment Table'
+                                                arrangement: 'Sphere'
+                                                radius-base: '2'
+                                                radius-scale: '0'
+                                                particles-base: '2'
+                                                particles-scale: '0'
+                                                visible-radius: '30'
+                                                dx: '0'
+                                                dy: '0'
+                                                dz: '0'
+                                                speed: '0'
+                                                amount: '1'
+                                                forward: '0'
+                                                upward: '1'
+                                                right: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Value Add-ab: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                key: 'stamina'
+                                                amount-base: '-5'
+                                                amount-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Status-bb: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                status: 'Invincible'
+                                                duration-base: '0.1'
+                                                duration-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                Skill Level-cb: 
+                  type: 'condition'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    skill: 'Defensive Crouch Skill'
+                    min-level: '2'
+                    max-level: '2'
+                    indicator: '2D'
+                  children: 
+                    Ground-db: 
+                      type: 'condition'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        type: 'On Ground'
+                        indicator: '2D'
+                      children: 
+                        Block-eb: 
+                          type: 'condition'
+                          indicator: '3D'
+                          data: 
+                            icon-key: ''
+                            standing: 'Not In Block'
+                            material: 'Ladder'
+                            indicator: '2D'
+                          children: 
+                            Block-fb: 
+                              type: 'condition'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                standing: 'Not In Block'
+                                material: 'Fence'
+                                indicator: '2D'
+                              children: 
+                                Value-gb: 
+                                  type: 'condition'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    key: 'stamina'
+                                    min-value-base: '0'
+                                    min-value-scale: '0'
+                                    max-value-base: '999'
+                                    max-value-scale: '0'
+                                    indicator: '2D'
+                                  children: 
+                                    Command-hb: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        command: 'playsound spells.wind1 ambient @a[r=16] ~ ~ ~ 0.2 1.5'
+                                        type: 'OP'
+                                        indicator: '2D'
+                                      children:  {}
+                                    Repeat-ib: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        repetitions-base: '7'
+                                        repetitions-scale: '0'
+                                        period: '0.05'
+                                        delay: '0'
+                                        stop-on-fail: 'False'
+                                        indicator: '2D'
+                                      children: 
+                                        Crouch-jb: 
+                                          type: 'condition'
+                                          indicator: '3D'
+                                          data: 
+                                            icon-key: ''
+                                            crouch: 'True'
+                                            indicator: '2D'
+                                          children: 
+                                            Launch-kb: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                relative: 'Caster'
+                                                forward-base: '0.75'
+                                                forward-scale: '0'
+                                                upward-base: '-0.1'
+                                                upward-scale: '0'
+                                                right-base: '0'
+                                                right-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Particle-lb: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                particle: 'Enchantment Table'
+                                                arrangement: 'Sphere'
+                                                radius-base: '2'
+                                                radius-scale: '0'
+                                                particles-base: '2'
+                                                particles-scale: '0'
+                                                visible-radius: '30'
+                                                dx: '0'
+                                                dy: '0'
+                                                dz: '0'
+                                                speed: '0'
+                                                amount: '1'
+                                                forward: '0'
+                                                upward: '1'
+                                                right: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Value Add-mb: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                key: 'stamina'
+                                                amount-base: '-5'
+                                                amount-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Status-nb: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                status: 'Invincible'
+                                                duration-base: '0.1'
+                                                duration-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                    Ground-ob: 
+                      type: 'condition'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        type: 'Not On Ground'
+                        indicator: '2D'
+                      children: 
+                        Block-pb: 
+                          type: 'condition'
+                          indicator: '3D'
+                          data: 
+                            icon-key: ''
+                            standing: 'Not In Block'
+                            material: 'Ladder'
+                            indicator: '2D'
+                          children: 
+                            Block-qb: 
+                              type: 'condition'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                standing: 'Not In Block'
+                                material: 'Fence'
+                                indicator: '2D'
+                              children: 
+                                Value-rb: 
+                                  type: 'condition'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    key: 'stamina'
+                                    min-value-base: '0'
+                                    min-value-scale: '0'
+                                    max-value-base: '999'
+                                    max-value-scale: '0'
+                                    indicator: '2D'
+                                  children: 
+                                    Command-sb: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        command: 'playsound spells.wind1 ambient @a[r=16] ~ ~ ~ 0.2 1.5'
+                                        type: 'OP'
+                                        indicator: '2D'
+                                      children:  {}
+                                    Repeat-tb: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        repetitions-base: '7'
+                                        repetitions-scale: '0'
+                                        period: '0.05'
+                                        delay: '0'
+                                        stop-on-fail: 'False'
+                                        indicator: '2D'
+                                      children: 
+                                        Crouch-ub: 
+                                          type: 'condition'
+                                          indicator: '3D'
+                                          data: 
+                                            icon-key: ''
+                                            crouch: 'True'
+                                            indicator: '2D'
+                                          children: 
+                                            Launch-vb: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                relative: 'Caster'
+                                                forward-base: '-0.75'
+                                                forward-scale: '0'
+                                                upward-base: '-0.1'
+                                                upward-scale: '0'
+                                                right-base: '0'
+                                                right-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Particle-wb: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                particle: 'Enchantment Table'
+                                                arrangement: 'Sphere'
+                                                radius-base: '2'
+                                                radius-scale: '0'
+                                                particles-base: '2'
+                                                particles-scale: '0'
+                                                visible-radius: '30'
+                                                dx: '0'
+                                                dy: '0'
+                                                dz: '0'
+                                                speed: '0'
+                                                amount: '1'
+                                                forward: '0'
+                                                upward: '1'
+                                                right: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Value Add-xb: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                key: 'stamina'
+                                                amount-base: '-5'
+                                                amount-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Status-yb: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                status: 'Invincible'
+                                                duration-base: '0.1'
+                                                duration-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                Skill Level-zb: 
+                  type: 'condition'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    skill: 'Defensive Crouch Skill'
+                    min-level: '3'
+                    max-level: '3'
+                    indicator: '2D'
+                  children: 
+                    Ground-ac: 
+                      type: 'condition'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        type: 'On Ground'
+                        indicator: '2D'
+                      children: 
+                        Block-bc: 
+                          type: 'condition'
+                          indicator: '3D'
+                          data: 
+                            icon-key: ''
+                            standing: 'Not In Block'
+                            material: 'Ladder'
+                            indicator: '2D'
+                          children: 
+                            Block-cc: 
+                              type: 'condition'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                standing: 'Not In Block'
+                                material: 'Fence'
+                                indicator: '2D'
+                              children: 
+                                Value-dc: 
+                                  type: 'condition'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    key: 'stamina'
+                                    min-value-base: '0'
+                                    min-value-scale: '0'
+                                    max-value-base: '999'
+                                    max-value-scale: '0'
+                                    indicator: '2D'
+                                  children: 
+                                    Command-ec: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        command: 'playsound spells.wind1 ambient @a[r=16] ~ ~ ~ 0.2 1.5'
+                                        type: 'OP'
+                                        indicator: '2D'
+                                      children:  {}
+                                    Repeat-fc: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        repetitions-base: '7'
+                                        repetitions-scale: '0'
+                                        period: '0.05'
+                                        delay: '0'
+                                        stop-on-fail: 'False'
+                                        indicator: '2D'
+                                      children: 
+                                        Crouch-gc: 
+                                          type: 'condition'
+                                          indicator: '3D'
+                                          data: 
+                                            icon-key: ''
+                                            crouch: 'True'
+                                            indicator: '2D'
+                                          children: 
+                                            Launch-hc: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                relative: 'Caster'
+                                                forward-base: '-0.75'
+                                                forward-scale: '0'
+                                                upward-base: '-0.1'
+                                                upward-scale: '0'
+                                                right-base: '0'
+                                                right-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Particle-ic: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                particle: 'Enchantment Table'
+                                                arrangement: 'Sphere'
+                                                radius-base: '2'
+                                                radius-scale: '0'
+                                                particles-base: '2'
+                                                particles-scale: '0'
+                                                visible-radius: '30'
+                                                dx: '0'
+                                                dy: '0'
+                                                dz: '0'
+                                                speed: '0'
+                                                amount: '1'
+                                                forward: '0'
+                                                upward: '1'
+                                                right: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Value Add-jc: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                key: 'stamina'
+                                                amount-base: '-5'
+                                                amount-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Status-kc: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                status: 'Invincible'
+                                                duration-base: '0.1'
+                                                duration-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                    Ground-lc: 
+                      type: 'condition'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        type: 'Not On Ground'
+                        indicator: '2D'
+                      children: 
+                        Block-mc: 
+                          type: 'condition'
+                          indicator: '3D'
+                          data: 
+                            icon-key: ''
+                            standing: 'Not In Block'
+                            material: 'Ladder'
+                            indicator: '2D'
+                          children: 
+                            Block-nc: 
+                              type: 'condition'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                standing: 'Not In Block'
+                                material: 'Fence'
+                                indicator: '2D'
+                              children: 
+                                Value-oc: 
+                                  type: 'condition'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    key: 'stamina'
+                                    min-value-base: '0'
+                                    min-value-scale: '0'
+                                    max-value-base: '999'
+                                    max-value-scale: '0'
+                                    indicator: '2D'
+                                  children: 
+                                    Command-pc: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        command: 'playsound spells.wind1 ambient @a[r=16] ~ ~ ~ 0.2 1.5'
+                                        type: 'OP'
+                                        indicator: '2D'
+                                      children:  {}
+                                    Repeat-qc: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        repetitions-base: '7'
+                                        repetitions-scale: '0'
+                                        period: '0.05'
+                                        delay: '0'
+                                        stop-on-fail: 'False'
+                                        indicator: '2D'
+                                      children: 
+                                        Crouch-rc: 
+                                          type: 'condition'
+                                          indicator: '3D'
+                                          data: 
+                                            icon-key: ''
+                                            crouch: 'True'
+                                            indicator: '2D'
+                                          children: 
+                                            Launch-sc: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                relative: 'Caster'
+                                                forward-base: '0.75'
+                                                forward-scale: '0'
+                                                upward-base: '-0.1'
+                                                upward-scale: '0'
+                                                right-base: '0'
+                                                right-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Particle-tc: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                particle: 'Enchantment Table'
+                                                arrangement: 'Sphere'
+                                                radius-base: '2'
+                                                radius-scale: '0'
+                                                particles-base: '2'
+                                                particles-scale: '0'
+                                                visible-radius: '30'
+                                                dx: '0'
+                                                dy: '0'
+                                                dz: '0'
+                                                speed: '0'
+                                                amount: '1'
+                                                forward: '0'
+                                                upward: '1'
+                                                right: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Value Add-uc: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                key: 'stamina'
+                                                amount-base: '-5'
+                                                amount-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Status-vc: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                status: 'Invincible'
+                                                duration-base: '0.1'
+                                                duration-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                Skill Level-wc: 
+                  type: 'condition'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    skill: 'Defensive Crouch Skill'
+                    min-level: '4'
+                    max-level: '4'
+                    indicator: '2D'
+                  children: 
+                    Ground-xc: 
+                      type: 'condition'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        type: 'On Ground'
+                        indicator: '2D'
+                      children: 
+                        Block-yc: 
+                          type: 'condition'
+                          indicator: '3D'
+                          data: 
+                            icon-key: ''
+                            standing: 'Not In Block'
+                            material: 'Ladder'
+                            indicator: '2D'
+                          children: 
+                            Block-zc: 
+                              type: 'condition'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                standing: 'Not In Block'
+                                material: 'Fence'
+                                indicator: '2D'
+                              children: 
+                                Value-ad: 
+                                  type: 'condition'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    key: 'stamina'
+                                    min-value-base: '0'
+                                    min-value-scale: '0'
+                                    max-value-base: '999'
+                                    max-value-scale: '0'
+                                    indicator: '2D'
+                                  children: 
+                                    Command-bd: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        command: 'playsound spells.wind1 ambient @a[r=16] ~ ~ ~ 0.2 1.5'
+                                        type: 'OP'
+                                        indicator: '2D'
+                                      children:  {}
+                                    Repeat-cd: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        repetitions-base: '7'
+                                        repetitions-scale: '0'
+                                        period: '0.05'
+                                        delay: '0'
+                                        stop-on-fail: 'False'
+                                        indicator: '2D'
+                                      children: 
+                                        Crouch-dd: 
+                                          type: 'condition'
+                                          indicator: '3D'
+                                          data: 
+                                            icon-key: ''
+                                            crouch: 'True'
+                                            indicator: '2D'
+                                          children: 
+                                            Launch-ed: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                relative: 'Caster'
+                                                forward-base: '0.75'
+                                                forward-scale: '0'
+                                                upward-base: '-0.1'
+                                                upward-scale: '0'
+                                                right-base: '0'
+                                                right-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Particle-fd: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                particle: 'Enchantment Table'
+                                                arrangement: 'Sphere'
+                                                radius-base: '2'
+                                                radius-scale: '0'
+                                                particles-base: '2'
+                                                particles-scale: '0'
+                                                visible-radius: '30'
+                                                dx: '0'
+                                                dy: '0'
+                                                dz: '0'
+                                                speed: '0'
+                                                amount: '1'
+                                                forward: '0'
+                                                upward: '1'
+                                                right: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Value Add-gd: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                key: 'stamina'
+                                                amount-base: '-5'
+                                                amount-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Status-hd: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                status: 'Invincible'
+                                                duration-base: '0.1'
+                                                duration-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                    Ground-id: 
+                      type: 'condition'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        type: 'Not On Ground'
+                        indicator: '2D'
+                      children: 
+                        Block-jd: 
+                          type: 'condition'
+                          indicator: '3D'
+                          data: 
+                            icon-key: ''
+                            standing: 'Not In Block'
+                            material: 'Ladder'
+                            indicator: '2D'
+                          children: 
+                            Block-kd: 
+                              type: 'condition'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                standing: 'Not In Block'
+                                material: 'Fence'
+                                indicator: '2D'
+                              children: 
+                                Value-ld: 
+                                  type: 'condition'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    key: 'stamina'
+                                    min-value-base: '0'
+                                    min-value-scale: '0'
+                                    max-value-base: '999'
+                                    max-value-scale: '0'
+                                    indicator: '2D'
+                                  children: 
+                                    Command-md: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        command: 'playsound spells.wind1 ambient @a[r=16] ~ ~ ~ 0.2 1.5'
+                                        type: 'OP'
+                                        indicator: '2D'
+                                      children:  {}
+                                    Repeat-nd: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        repetitions-base: '7'
+                                        repetitions-scale: '0'
+                                        period: '0.05'
+                                        delay: '0'
+                                        stop-on-fail: 'False'
+                                        indicator: '2D'
+                                      children: 
+                                        Crouch-od: 
+                                          type: 'condition'
+                                          indicator: '3D'
+                                          data: 
+                                            icon-key: ''
+                                            crouch: 'True'
+                                            indicator: '2D'
+                                          children: 
+                                            Launch-pd: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                relative: 'Caster'
+                                                forward-base: '0.75'
+                                                forward-scale: '0'
+                                                upward-base: '-0.1'
+                                                upward-scale: '0'
+                                                right-base: '0'
+                                                right-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Particle-qd: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                particle: 'Enchantment Table'
+                                                arrangement: 'Sphere'
+                                                radius-base: '2'
+                                                radius-scale: '0'
+                                                particles-base: '2'
+                                                particles-scale: '0'
+                                                visible-radius: '30'
+                                                dx: '0'
+                                                dy: '0'
+                                                dz: '0'
+                                                speed: '0'
+                                                amount: '1'
+                                                forward: '0'
+                                                upward: '1'
+                                                right: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Value Add-rd: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                key: 'stamina'
+                                                amount-base: '-5'
+                                                amount-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}
+                                            Status-sd: 
+                                              type: 'mechanic'
+                                              indicator: '3D'
+                                              data: 
+                                                icon-key: ''
+                                                counts: 'True'
+                                                status: 'Invincible'
+                                                duration-base: '0.1'
+                                                duration-scale: '0'
+                                                indicator: '2D'
+                                              children:  {}

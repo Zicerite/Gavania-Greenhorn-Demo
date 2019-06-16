@@ -1,0 +1,902 @@
+Backup Weapon Controller: 
+  name: 'Backup Weapon Controller'
+  type: 'Dynamic'
+  max-level: 1
+  skill-req-lvl: 1
+  needs-permission: 'false'
+  attributes: 
+    level-base: '1'
+    level-scale: '0'
+    cost-base: '0'
+    cost-scale: '0'
+    cooldown-base: '0'
+    cooldown-scale: '0'
+    mana-base: '0'
+    mana-scale: '0'
+    points-spent-req-base: '0'
+    points-spent-req-scale: '0'
+    incompatible: 
+    - ''
+  msg: '&6{player} &2has cast &6{skill}'
+  icon: 'DIAMOND'
+  icon-durability: 0
+  icon-data: 0
+  icon-lore: 
+  - '&d{name} &7({level}/{max})'
+  - '&2Type: &6{type}'
+  - ''
+  - '&6&lGalaxy Brain'
+  desc:  []
+  components: 
+    Crouch-fe: 
+      type: 'trigger'
+      indicator: '3D'
+      data: 
+        icon-key: ''
+        mana: 'False'
+        cooldown: 'False'
+        type: 'Start Crouching'
+        indicator: '2D'
+      children: 
+        Item-ge: 
+          type: 'condition'
+          indicator: '3D'
+          data: 
+            icon-key: ''
+            check-mat: 'True'
+            material: 'Stone Hoe'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'False'
+            regex: 'False'
+            indicator: '2D'
+          children: 
+            Offhand-he: 
+              type: 'condition'
+              indicator: '3D'
+              data: 
+                icon-key: ''
+                check-mat: 'True'
+                material: 'Coal'
+                check-data: 'False'
+                check-lore: 'False'
+                check-name: 'False'
+                regex: 'False'
+                indicator: '2D'
+              children: 
+                Delay-ie: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    delay-base: '0.1'
+                    delay-scale: '0'
+                    indicator: '2D'
+                  children: 
+                    Message-je: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: '-'
+                        indicator: '2D'
+                      children:  {}
+                    Message-ke: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Damage: {RC_Lore_DMG}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-le: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Range: {RC_Lore_Range}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-me: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC T Range: {RC_Lore_TRange}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-ne: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC P. Radius: {RC_Lore_PRadius}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-oe: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC L. Radius: {RC_Lore_LRadius}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-pe: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Knockback: {RC_Lore_KB}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-qe: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Amount: {RC_Lore_Amount}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-re: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Angle: {RC_Lore_Angle}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-se: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Velocity: {RC_Lore_Velocity}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-te: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Cooldown: {RC_Lore_Cooldown}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-ue: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: '---'
+                        indicator: '2D'
+                      children:  {}
+    Crouch-jf: 
+      type: 'trigger'
+      indicator: '3D'
+      data: 
+        icon-key: ''
+        mana: 'False'
+        cooldown: 'False'
+        type: 'Start Crouching'
+        indicator: '2D'
+      children: 
+        Item-kf: 
+          type: 'condition'
+          indicator: '3D'
+          data: 
+            icon-key: ''
+            check-mat: 'True'
+            material: 'Wood Hoe'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'False'
+            regex: 'False'
+            indicator: '2D'
+          children: 
+            Offhand-lf: 
+              type: 'condition'
+              indicator: '3D'
+              data: 
+                icon-key: ''
+                check-mat: 'True'
+                material: 'Coal'
+                check-data: 'False'
+                check-lore: 'False'
+                check-name: 'False'
+                regex: 'False'
+                indicator: '2D'
+              children: 
+                Delay-mf: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    delay-base: '0.1'
+                    delay-scale: '0'
+                    indicator: '2D'
+                  children: 
+                    Message-nf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: '-'
+                        indicator: '2D'
+                      children:  {}
+                    Message-of: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Damage: {RC_Lore_DMG}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-pf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Range: {RC_Lore_Range}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-qf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC T Range: {RC_Lore_TRange}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-rf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC P. Radius: {RC_Lore_PRadius}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-sf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC L. Radius: {RC_Lore_LRadius}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-tf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Knockback: {RC_Lore_KB}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-uf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Amount: {RC_Lore_Amount}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-vf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Angle: {RC_Lore_Angle}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-wf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Velocity: {RC_Lore_Velocity}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-xf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Cooldown: {RC_Lore_Cooldown}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-yf: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: '---'
+                        indicator: '2D'
+                      children:  {}
+    Crouch-ig: 
+      type: 'trigger'
+      indicator: '3D'
+      data: 
+        icon-key: ''
+        mana: 'False'
+        cooldown: 'False'
+        type: 'Start Crouching'
+        indicator: '2D'
+      children: 
+        Item-jg: 
+          type: 'condition'
+          indicator: '3D'
+          data: 
+            icon-key: ''
+            check-mat: 'True'
+            material: 'Wood Hoe'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'False'
+            regex: 'False'
+            indicator: '2D'
+          children: 
+            Offhand-kg: 
+              type: 'condition'
+              indicator: '3D'
+              data: 
+                icon-key: ''
+                check-mat: 'True'
+                material: 'Coal'
+                check-data: 'False'
+                check-lore: 'False'
+                check-name: 'False'
+                regex: 'False'
+                indicator: '2D'
+              children: 
+                Message-lg: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: '---'
+                    indicator: '2D'
+                  children:  {}
+                Message-mg: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC Damage: {LC_Lore_DMG}'
+                    indicator: '2D'
+                  children:  {}
+                Message-ng: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC Range: {LC_Lore_Range}'
+                    indicator: '2D'
+                  children:  {}
+                Message-og: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC T Range: {LC_Lore_TRange}'
+                    indicator: '2D'
+                  children:  {}
+                Message-pg: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC Knockback: {LC_Lore_KB}'
+                    indicator: '2D'
+                  children:  {}
+                Message-qg: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC Cooldown: {LC_Lore_Cooldown}'
+                    indicator: '2D'
+                  children:  {}
+    Crouch-fh: 
+      type: 'trigger'
+      indicator: '3D'
+      data: 
+        icon-key: ''
+        mana: 'False'
+        cooldown: 'False'
+        type: 'Start Crouching'
+        indicator: '2D'
+      children: 
+        Item-gh: 
+          type: 'condition'
+          indicator: '3D'
+          data: 
+            icon-key: ''
+            check-mat: 'True'
+            material: 'Wood Hoe'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'False'
+            regex: 'False'
+            indicator: '2D'
+          children: 
+            Offhand-hh: 
+              type: 'condition'
+              indicator: '3D'
+              data: 
+                icon-key: ''
+                check-mat: 'True'
+                material: 'Coal'
+                check-data: 'False'
+                check-lore: 'False'
+                check-name: 'False'
+                regex: 'False'
+                indicator: '2D'
+              children: 
+                Delay-ih: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    delay-base: '0.1'
+                    delay-scale: '0'
+                    indicator: '2D'
+                  children: 
+                    Message-jh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: '-'
+                        indicator: '2D'
+                      children:  {}
+                    Message-kh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Damage: {RC_Lore_DMG}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-lh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Range: {RC_Lore_Range}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-mh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC T Range: {RC_Lore_TRange}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-nh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC P. Radius: {RC_Lore_PRadius}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-oh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC L. Radius: {RC_Lore_LRadius}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-ph: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Knockback: {RC_Lore_KB}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-qh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Amount: {RC_Lore_Amount}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-rh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Angle: {RC_Lore_Angle}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-sh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Velocity: {RC_Lore_Velocity}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-th: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: 'RC Cooldown: {RC_Lore_Cooldown}'
+                        indicator: '2D'
+                      children:  {}
+                    Message-uh: 
+                      type: 'mechanic'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        counts: 'True'
+                        message: '---'
+                        indicator: '2D'
+                      children:  {}
+    Crouch-fi: 
+      type: 'trigger'
+      indicator: '3D'
+      data: 
+        icon-key: ''
+        mana: 'False'
+        cooldown: 'False'
+        type: 'Start Crouching'
+        indicator: '2D'
+      children: 
+        Item-gi: 
+          type: 'condition'
+          indicator: '3D'
+          data: 
+            icon-key: ''
+            check-mat: 'True'
+            material: 'Stone Hoe'
+            check-data: 'False'
+            check-lore: 'False'
+            check-name: 'False'
+            regex: 'False'
+            indicator: '2D'
+          children: 
+            Offhand-hi: 
+              type: 'condition'
+              indicator: '3D'
+              data: 
+                icon-key: ''
+                check-mat: 'True'
+                material: 'Coal'
+                check-data: 'False'
+                check-lore: 'False'
+                check-name: 'False'
+                regex: 'False'
+                indicator: '2D'
+              children: 
+                Message-ii: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: '---'
+                    indicator: '2D'
+                  children:  {}
+                Message-ji: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC Damage: {LC_Lore_DMG}'
+                    indicator: '2D'
+                  children:  {}
+                Message-ki: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC Range: {LC_Lore_Range}'
+                    indicator: '2D'
+                  children:  {}
+                Message-li: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC T Range: {LC_Lore_TRange}'
+                    indicator: '2D'
+                  children:  {}
+                Message-mi: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC Knockback: {LC_Lore_KB}'
+                    indicator: '2D'
+                  children:  {}
+                Message-ni: 
+                  type: 'mechanic'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    counts: 'True'
+                    message: 'LC Cooldown: {LC_Lore_Cooldown}'
+                    indicator: '2D'
+                  children:  {}
+    Crouch-pi: 
+      type: 'trigger'
+      indicator: '3D'
+      data: 
+        icon-key: ''
+        mana: 'False'
+        cooldown: 'False'
+        type: 'Start Crouching'
+        indicator: '2D'
+      children:  {}
+    Cast: 
+      type: 'trigger'
+      indicator: '3D'
+      data: 
+        icon-key: ''
+        indicator: '2D'
+      children: 
+        Potion-cd: 
+          type: 'condition'
+          indicator: '3D'
+          data: 
+            icon-key: ''
+            type: 'Not Active'
+            potion: 'Slow Digging'
+            min-rank-base: '0'
+            min-rank-scale: '0'
+            max-rank-base: '999'
+            max-rank-scale: '0'
+            indicator: '2D'
+          children: 
+            Item-dd: 
+              type: 'condition'
+              indicator: '3D'
+              data: 
+                icon-key: ''
+                check-mat: 'False'
+                check-data: 'False'
+                check-lore: 'True'
+                lore: 'Right Click: Shoot Arrow'
+                check-name: 'False'
+                regex: 'False'
+                indicator: '2D'
+              children: 
+                Value-ed: 
+                  type: 'condition'
+                  indicator: '3D'
+                  data: 
+                    icon-key: ''
+                    key: 'b'
+                    min-value-base: '1'
+                    min-value-scale: '0'
+                    max-value-base: '999'
+                    max-value-scale: '0'
+                    indicator: '2D'
+                  children: 
+                    Self-fd: 
+                      type: 'target'
+                      indicator: '3D'
+                      data: 
+                        icon-key: ''
+                        indicator: '2D'
+                        group: 'enemy'
+                        wall: 'false'
+                        caster: 'false'
+                      children: 
+                        Self-gd: 
+                          type: 'target'
+                          indicator: '3D'
+                          data: 
+                            icon-key: ''
+                            indicator: '2D'
+                            group: 'enemy'
+                            wall: 'false'
+                            caster: 'false'
+                          children: 
+                            Command-hd: 
+                              type: 'mechanic'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                counts: 'True'
+                                command: 'playsound minecraft:entity.skeleton.shoot ambient @a[r=16] ~ ~ ~ 0.6 1'
+                                type: 'OP'
+                                indicator: '2D'
+                              children:  {}
+                            Value Set-id: 
+                              type: 'mechanic'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                counts: 'True'
+                                key: 'b'
+                                value-base: '0'
+                                value-scale: '0'
+                                indicator: '2D'
+                              children:  {}
+                            Delay-jd: 
+                              type: 'mechanic'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                counts: 'True'
+                                delay-base: 'RC_Lore_Cooldown'
+                                delay-scale: '0'
+                                indicator: '2D'
+                              children: 
+                                Value Set-kd: 
+                                  type: 'mechanic'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    counts: 'True'
+                                    key: 'b'
+                                    value-base: '1'
+                                    value-scale: '0'
+                                    indicator: '2D'
+                                  children:  {}
+                            Projectile-ld: 
+                              type: 'mechanic'
+                              indicator: '3D'
+                              data: 
+                                icon-key: ''
+                                counts: 'True'
+                                projectile: 'Arrow'
+                                flaming: 'False'
+                                cost: ''
+                                group: 'Enemy'
+                                spread: 'Cone'
+                                amount-base: 'RC_Lore_Amount'
+                                amount-scale: '0'
+                                velocity-base: 'RC_Lore_Velocity'
+                                velocity-scale: '0'
+                                angle-base: 'RC_Lore_Angle'
+                                angle-scale: '0'
+                                position: '0'
+                                forward-base: '0'
+                                forward-scale: '0'
+                                upward-base: '1.5'
+                                upward-scale: '0'
+                                right-base: '0'
+                                right-scale: '0'
+                                use-effect: 'False'
+                                indicator: '2D'
+                              children: 
+                                Particle-md: 
+                                  type: 'mechanic'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    counts: 'True'
+                                    particle: 'Crit'
+                                    arrangement: 'Sphere'
+                                    radius-base: 'RC_Lore_LRadius'
+                                    radius-scale: '0'
+                                    particles-base: '3'
+                                    particles-scale: '0'
+                                    visible-radius: '40'
+                                    dx: '0'
+                                    dy: '0'
+                                    dz: '0'
+                                    speed: '0.25'
+                                    amount: '1'
+                                    forward: '0'
+                                    upward: '1'
+                                    right: '0'
+                                    indicator: '2D'
+                                  children:  {}
+                                Area-nd: 
+                                  type: 'target'
+                                  indicator: '3D'
+                                  data: 
+                                    icon-key: ''
+                                    radius-base: 'RC_Lore_LRadius'
+                                    radius-scale: '0'
+                                    group: 'Enemy'
+                                    wall: 'True'
+                                    caster: 'False'
+                                    max-base: '999'
+                                    max-scale: '0'
+                                    random: 'False'
+                                    indicator: '2D'
+                                  children: 
+                                    Damage-od: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: 'dmg'
+                                        counts: 'True'
+                                        type: 'Damage'
+                                        value-base: 'RC_Lore_DMG'
+                                        value-scale: '0'
+                                        true: 'False'
+                                        classifier: 'magic'
+                                        indicator: '2D'
+                                      children:  {}
+                                    Push-pd: 
+                                      type: 'mechanic'
+                                      indicator: '3D'
+                                      data: 
+                                        icon-key: ''
+                                        counts: 'True'
+                                        type: 'Fixed'
+                                        speed-base: 'RC_Lore_KB'
+                                        speed-scale: '0'
+                                        source: 'none'
+                                        indicator: '2D'
+                                      children:  {}
+                        Linear-qd: 
+                          type: 'target'
+                          indicator: '3D'
+                          data: 
+                            icon-key: 'range0'
+                            range-base: 'RC_Lore_Range'
+                            range-scale: '0'
+                            tolerance-base: 'RC_Lore_TRange'
+                            tolerance-scale: '0'
+                            group: 'Enemy'
+                            wall: 'True'
+                            caster: 'False'
+                            max-base: '999'
+                            max-scale: '0'
+                            indicator: '2D'
+                          children:  {}
+    Initialize: 
+      type: 'trigger'
+      indicator: '3D'
+      data: 
+        icon-key: ''
+        indicator: '2D'
+      children:  {}
